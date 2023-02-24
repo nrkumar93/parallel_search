@@ -1,4 +1,0 @@
-<launch>
-<rosparam param="use_sim_time">True</rosparam>
-<node pkg="brain2_ros" type="publish_clock.py" name="ros_master_clock"/>
-</launch>

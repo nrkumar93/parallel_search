@@ -7,8 +7,6 @@ import numpy as np
 from numpy import genfromtxt
 from abb_fkik_solver import ABBFkIkSolver
 
-print(fkik.computeFK([0,0,0,0,0,0]))
-print(fkik.computeIK([0.815,0,0.9615], [0,0,0]))
 
 
 #### Load mujoco model
@@ -17,6 +15,13 @@ urdf = os.path.join(model_dir, 'irb1600_6_12_generated.urdf')
 mjcf_arm = 'irb1600_6_12_shield.xml'
 arm_model = MjModel.from_xml_path(os.path.join(model_dir, mjcf_arm))
 arm_data = MjData(arm_model)
+
+
+urdf = os.path.join(model_dir, 'irb1600_6_12_generated.urdf')
+fkik = ABBFkIkSolver(urdf)
+print(fkik.computeFK([0,0,0,0,0,0]))
+print(fkik.computeIK([0.815,0,0.9615], [0,0,0]))
+
 
 starts = np.empty((0,arm_model.nq))
 goals = np.empty((0,arm_model.nq))

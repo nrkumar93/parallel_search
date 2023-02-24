@@ -1,5 +1,0 @@
-Header header
-geometry_msgs/PoseStamped goal_pose
-geometry_msgs/PoseArray obstacle_poses
----
-trajectory_msgs/JointTrajectory trajectory
