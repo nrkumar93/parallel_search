@@ -1,0 +1,8 @@
+<launch>
+  <!-- Show in Rviz -->
+  <node name="rviz_franka_sensors" 
+      pkg="rviz" 
+      type="rviz" 
+      args="-d $(find brain2_ros)/launch/lula_franka_sensors.rviz"/>
+
+</launch>

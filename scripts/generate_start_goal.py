@@ -5,10 +5,15 @@ import mujoco_viewer
 from time import sleep
 import numpy as np
 from numpy import genfromtxt
+from abb_fkik_solver import ABBFkIkSolver
+
+print(fkik.computeFK([0,0,0,0,0,0]))
+print(fkik.computeIK([0.815,0,0.9615], [0,0,0]))
 
 
 #### Load mujoco model
 model_dir = '../third_party/mujoco-2.3.2/model/abb/irb_1600'
+urdf = os.path.join(model_dir, 'irb1600_6_12_generated.urdf')
 mjcf_arm = 'irb1600_6_12_shield.xml'
 arm_model = MjModel.from_xml_path(os.path.join(model_dir, mjcf_arm))
 arm_data = MjData(arm_model)
@@ -23,6 +28,8 @@ vol = np.array([[[1.2, 1.8], [-1.2, 0], [0.2, 1.2]],
                 [[0, 1.2], [-1.8, -1.2], [0.2, 1.2]]])
 
 data_size = 500
+
+fkik = ABBFkIkSolver(urdf, base_position=[0,0,0])
 
 def isCollisionFree(q):
     if not ((arm_model.jnt_range[:,0] <= q) and (arm_model.jnt_range[:,1] >= q)):
@@ -39,7 +46,7 @@ def isCollisionFree(q):
 
 def ik(x):
     ### your code here
-    q=np.array([])
+    q = fkik.computeIK(x)
     return q
 
 while s < data_size:

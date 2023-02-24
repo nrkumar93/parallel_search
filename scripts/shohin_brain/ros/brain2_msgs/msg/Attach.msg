@@ -1,0 +1,2 @@
+string actor
+string goal
