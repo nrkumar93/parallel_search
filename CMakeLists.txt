@@ -7,6 +7,8 @@ list(APPEND CMAKE_PREFIX_PATH /opt/drake)
 list(APPEND CMAKE_PREFIX_PATH /opt/ros/noetic)
 set(MUJOCO_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/third_party/mujoco-2.3.2/include")
 set(MUJOCO_LIB_DIR "${CMAKE_SOURCE_DIR}/third_party/mujoco-2.3.2/lib")
+set(fmt_DIR /home/shield/mambaforge/lib/cmake/fmt)
+set(spdlog_DIR /usr/lib/x86_64-linux-gnu/cmake/spdlog)
 
 find_package(OpenCV REQUIRED)
 find_package(SBPL REQUIRED)
@@ -55,12 +57,16 @@ set(SOURCES
     src/planners/insat/opt/BSplineOpt.cpp
 )
 
-add_library(manip_moveit_interface
+add_library(manip_moveit_interface STATIC
         examples/manipulation/utils.cpp
-        examples/manipulation/MoveitInterface.cpp)
+        examples/manipulation/MoveitInterface.cpp
+        examples/manipulation/ManipulationActions.cpp
+        examples/manipulation/bfs3d.cpp
+        ${SOURCES})
 target_link_libraries(manip_moveit_interface
         ${SBPL_LIBRARIES}
         ${drake_LIBRARIES}
+        mujoco
         pthread)
 
 
