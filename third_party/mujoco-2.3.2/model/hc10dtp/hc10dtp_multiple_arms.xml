@@ -1,0 +1,148 @@
+<mujoco model="hc10_multiple_arms">
+  <compiler angle="radian" meshdir="/home/gaussian/cmu_ri_phd/phd_research/parallel_search/third_party/mujoco-2.3.2/model/hc10dtp/motoman/meshes/hc10dt_b10/" autolimits="true"/>
+  <default/>
+  <asset>
+    <mesh name="base_link" file="collision/base_link.obj"/>
+    <mesh name="link_1_s" file="collision/link_1_s.obj"/>
+    <mesh name="link_2_l" file="collision/link_2_l.obj"/>
+    <mesh name="link_3_u" file="collision/link_3_u.obj"/>
+    <mesh name="link_4_r" file="collision/link_4_r.obj"/>
+    <mesh name="link_5_b" file="collision/link_5_b.obj"/>
+    <mesh name="link_6_t" file="collision/link_6_t.obj"/>
+<!--     <mesh name="robotiq_85_coupler" file="robotiq_85_coupler.obj"/>
+    <mesh name="robotiq_85_base_link" file="collision/robotiq_85_base_link.obj"/>
+    <mesh name="robotiq_85_knuckle_link" file="collision/robotiq_85_knuckle_link.obj"/>
+    <mesh name="robotiq_85_finger_link" file="collision/robotiq_85_finger_link.obj"/>
+    <mesh name="robotiq_85_inner_knuckle_link" file="collision/robotiq_85_inner_knuckle_link.obj"/>
+    <mesh name="robotiq_85_finger_tip_link" file="collision/robotiq_85_finger_tip_link.obj"/> -->
+  </asset>
+
+
+  <worldbody>
+
+    <!-- Lights -->
+    <light name="light0" diffuse=".5 .5 .5" pos="1.5 1.5 2"   dir="-1 -1 -.5" castshadow="false" />
+    <light name="light1" diffuse=".5 .5 .5" pos="-1.5 1.5 2"  dir="1 -1 -.5" castshadow="false" />
+    <light name="light2" diffuse=".5 .5 .5" pos="1.5 -1.5 2"  dir="-1 1 -.5" castshadow="false" />
+    <light name="light3" diffuse=".5 .5 .5" pos="-1.5 -1.5 2" dir="1 1 -.5" castshadow="false" />  
+
+    <geom size="0.30425 0.609 0.483387" pos="0.038588 0 0.483387" type="box" rgba="0.729 0.549 0.353 1"/>
+    <geom size="0.1524 0.1524 0.003175" pos="0 0 0.973125" type="box" rgba="0.7529 0.7529 0.7529 1"/>
+    <geom pos="0 0 0.973125" type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="base_link"/>
+    <geom size="0.61 0.30475 0.471488" pos="0.957229 0.625872 0.471488" quat="0.00573337 0 0 -0.999984" type="box" rgba="0.729 0.549 0.353 1"/>
+    <geom size="0.1524 0.1524 0.003175" pos="0.880195 0.770183 0.949325" quat="0.709131 0 0 -0.705077" type="box" rgba="0.7529 0.7529 0.7529 1"/>
+    <geom pos="0.880195 0.770183 0.949325" quat="0.709131 0 0 -0.705077" type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="base_link"/>
+    <geom size="0.6107 0.30475 0.472275" pos="0.961271 -0.600915 0.472275" quat="0.00573337 0 0 0.999984" type="box" rgba="0.729 0.549 0.353 1"/>
+    <geom size="0.1524 0.1524 0.003175" pos="0.9621 -0.73627 0.949325" quat="0.709131 0 0 0.705077" type="box" rgba="0.7529 0.7529 0.7529 1"/>
+    <geom pos="0.9621 -0.73627 0.949325" quat="0.709131 0 0 0.705077" type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="base_link"/>
+    <geom size="0.4575 0.305085 0.466725" pos="-0.114589 -0.925107 0.466725" type="box" rgba="0.729 0.549 0.353 1"/>
+    <geom size="0.4586 0.305582 0.466725" pos="-0.117171 0.904825 0.466725" type="box" rgba="0.729 0.549 0.353 1"/>
+    <body name="arm_1link_1_s" pos="0 0 1.24812" gravcomp="0">
+      <joint name="arm_1joint_1_s" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159"/>
+      <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_1_s"/>
+      <body name="arm_1link_2_l" pos="0 0 0" gravcomp="0">
+        <joint name="arm_1joint_2_l" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+        <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_2_l"/>
+        <body name="arm_1link_3_u" pos="0 0 0.7" gravcomp="0">
+          <joint name="arm_1joint_3_u" pos="0 0 0" axis="0 -1 0" range="-1.65806 4.62512"/>
+          <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_3_u"/>
+          <body name="arm_1link_4_r" pos="0.5 0 0" gravcomp="0">
+            <joint name="arm_1joint_4_r" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+            <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_4_r"/>
+            <body name="arm_1link_5_b" pos="0 0.162 0" gravcomp="0">
+              <joint name="arm_1joint_5_b" pos="0 0 0" axis="0 -1 0" range="-3.14159 3.14159"/>
+              <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_5_b"/>
+              <body name="arm_1link_6_t" pos="0 0 0" gravcomp="0">
+                <joint name="arm_1joint_6_t" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+                <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_6_t"/>
+<!--                 <geom pos="0.174 0 0" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="robotiq_85_coupler"/>
+                <geom pos="0.178 0 0" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_base_link"/>
+                <geom pos="0.232905 0 -0.0306011" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 -0.0620872" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.232905 0 0.0306011" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 0.0620872" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.23942 0 -0.0127" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 -0.0502994" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/>
+                <geom pos="0.23942 0 0.0127" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 0.0502994" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/> -->
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="arm_2link_1_s" pos="0.880195 0.770183 1.22433" quat="0.709131 0 0 -0.705077" gravcomp="0">
+      <joint name="arm_2joint_1_s" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159"/>
+      <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_1_s"/>
+      <body name="arm_2link_2_l" pos="0 0 0" gravcomp="0">
+        <joint name="arm_2joint_2_l" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+        <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_2_l"/>
+        <body name="arm_2link_3_u" pos="0 0 0.7" gravcomp="0">
+          <joint name="arm_2joint_3_u" pos="0 0 0" axis="0 -1 0" range="-1.65806 4.62512"/>
+          <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_3_u"/>
+          <body name="arm_2link_4_r" pos="0.5 0 0" gravcomp="0">
+            <joint name="arm_2joint_4_r" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+            <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_4_r"/>
+            <body name="arm_2link_5_b" pos="0 0.162 0" gravcomp="0">
+              <joint name="arm_2joint_5_b" pos="0 0 0" axis="0 -1 0" range="-3.14159 3.14159"/>
+              <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_5_b"/>
+              <body name="arm_2link_6_t" pos="0 0 0" gravcomp="0">
+                <joint name="arm_2joint_6_t" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+                <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_6_t"/>
+<!--                 <geom pos="0.174 0 0" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="robotiq_85_coupler"/>
+                <geom pos="0.178 0 0" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_base_link"/>
+                <geom pos="0.232905 0 -0.0306011" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 -0.0620872" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.232905 0 0.0306011" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 0.0620872" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.23942 0 -0.0127" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 -0.0502994" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/>
+                <geom pos="0.23942 0 0.0127" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 0.0502994" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/> -->
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="arm_3link_1_s" pos="0.9621 -0.73627 1.22433" quat="0.709131 0 0 0.705077" gravcomp="0">
+      <joint name="arm_3joint_1_s" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159"/>
+      <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_1_s"/>
+      <body name="arm_3link_2_l" pos="0 0 0" gravcomp="0">
+        <joint name="arm_3joint_2_l" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159"/>
+        <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_2_l"/>
+        <body name="arm_3link_3_u" pos="0 0 0.7" gravcomp="0">
+          <joint name="arm_3joint_3_u" pos="0 0 0" axis="0 -1 0" range="-1.65806 4.62512"/>
+          <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_3_u"/>
+          <body name="arm_3link_4_r" pos="0.5 0 0" gravcomp="0">
+            <joint name="arm_3joint_4_r" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+            <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_4_r"/>
+            <body name="arm_3link_5_b" pos="0 0.162 0" gravcomp="0">
+              <joint name="arm_3joint_5_b" pos="0 0 0" axis="0 -1 0" range="-3.14159 3.14159"/>
+              <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_5_b"/>
+              <body name="arm_3link_6_t" pos="0 0 0" gravcomp="0">
+                <joint name="arm_3joint_6_t" pos="0 0 0" axis="-1 0 0" range="-3.14159 3.14159"/>
+                <geom type="mesh" rgba="0.129412 0.14902 0.74902 1" mesh="link_6_t"/>
+<!--                 <geom pos="0.174 0 0" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="robotiq_85_coupler"/>
+                <geom pos="0.178 0 0" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_base_link"/>
+                <geom pos="0.232905 0 -0.0306011" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 -0.0620872" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.232905 0 0.0306011" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_knuckle_link"/>
+                <geom pos="0.228819 0 0.0620872" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_link"/>
+                <geom pos="0.23942 0 -0.0127" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 -0.0502994" quat="-0.707107 -0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/>
+                <geom pos="0.23942 0 0.0127" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_inner_knuckle_link"/>
+                <geom pos="0.28246 0 0.0502994" quat="-0.707107 0.707107 0 0" type="mesh" mesh="robotiq_85_finger_tip_link"/> -->
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <keyframe>
+      <!-- <key qpos='-9.49644e-05 -0.789973 -1 -1.57077 6.5016e-06 -8.05974e-05 1.74341e-05 -0.789978 -1 -1.5707 3.70831e-05 9.24692e-05 -9.84198e-05 -0.899905 -1.10009 -1.57073 1.11472e-05 9.12574e-05'/> -->
+      <key qpos='-0.546162 0.669401 -0.248195 -5.4534e-05 -0.653177 -1.02473 -0.0624112 0.625559 -0.299575 1.61607 -1.53673 0.64482 1.50254 0.914199 0.991113 3.5906e-05 -1.64772 -2.33449'/>
+  </keyframe>
+</mujoco>
