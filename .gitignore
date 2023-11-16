@@ -8,7 +8,6 @@ scripts/camera_calibration/calib_data
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch
